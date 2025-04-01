@@ -12,7 +12,7 @@ namespace AppVeiculo
 
         public override double CalcularAluguel(int dias)
         {
-            return ValorDiaria * dias - (this.ValorDiaria*dias*0.1);
+            return ValorDiaria * dias*0.9;
         }
     }
 }

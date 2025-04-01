@@ -12,34 +12,41 @@ namespace AppVeiculo
             int escolha = 0;
             do
             {
-                utility.Menu();
-                int.TryParse(Console.ReadLine(), out escolha);
-                switch (escolha)
+                try
                 {
-                    case 1:
-                        Console.WriteLine("Cadastrar veículo");
-                        Veiculo cadastro = utility.CadastrarVeiculo();
-                        if (cadastro != null) 
-                            veiculos.Add(cadastro);
-                        break;
-                    case 2:
-                        Console.WriteLine("Listar veículos");
-                        utility.ListarVeiculos(veiculos);
-                        break;
-                    case 3:
-                        Console.WriteLine("Alugar veículo");
-                        utility.AlugarVeiculo(veiculos);
-                        break;
-                    case 4:
-                        Console.WriteLine("Devolver veículo");
-                        utility.DevolverVeiculo(veiculos);
-                        break;
-                    case 5:
-                        Console.WriteLine("Saindo");
-                        break;
-                    default:
-                        Console.WriteLine("Opção inválida");
-                        break;
+                    utility.Menu();
+                    int.TryParse(Console.ReadLine(), out escolha);
+                    switch (escolha)
+                    {
+                        case 1:
+                            Console.WriteLine("\n--- CADASTRO VEICULAR ---\n");
+                            Veiculo cadastro = utility.CadastrarVeiculo();
+                            if (cadastro != null)
+                                veiculos.Add(cadastro);
+                            break;
+                        case 2:
+                            Console.WriteLine("\n--- LISTAGEM DE VEICULAR ---\n");
+                            utility.ListarVeiculos(veiculos);
+                            break;
+                        case 3:
+                            Console.WriteLine("\n--- LOCAÇÃO DE VEICULAR ---\n");
+                            utility.AlugarVeiculo(veiculos);
+                            break;
+                        case 4:
+                            Console.WriteLine("\n--- DEVOLUÇÃO VEICULAR ---\n");
+                            utility.DevolverVeiculo(veiculos);
+                            break;
+                        case 5:
+                            Console.WriteLine("--- SAINDO ---");
+                            break;
+                        default:
+                            Console.WriteLine("Opção inválida");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ocorreu um erro: {ex.Message}");
                 }
                 Console.WriteLine("\nDigite qualquer tecla continuar...");
                 Console.ReadKey();
